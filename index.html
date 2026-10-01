@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Callahan's Feed & Tack | Lakeland, Florida</title>
+<meta name="description" content="Callahan's Feed & Tack in Lakeland, Florida. Feed, tack and supplies for your animals. Formerly J & J Tack Shack.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F1F3EC;
+    --surface: #FFFFFF;
+    --ink: #14231A;
+    --muted: #4C5B50;
+    --line: #C5CEC0;
+    --hero-bg: #2F5D3A;
+    --hero-ink: #F1F3EC;
+    --tan: #B9824A;
+    --red: #A63A2B;
+    --red-ink: #FFFFFF;
+    --notes-bg: #E2E8DC;
+    --stencil: "Stardos Stencil", "Rockwell", "Courier New", serif;
+    --sans: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1A13;
+      --surface: #16251B;
+      --ink: #E9EEE4;
+      --muted: #A9B8AA;
+      --line: #2C4033;
+      --hero-bg: #1E3E2A;
+      --hero-ink: #E9EEE4;
+      --tan: #D2A06A;
+      --notes-bg: #13221A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1A13;
+    --surface: #16251B;
+    --ink: #E9EEE4;
+    --muted: #A9B8AA;
+    --line: #2C4033;
+    --hero-bg: #1E3E2A;
+    --hero-ink: #E9EEE4;
+    --tan: #D2A06A;
+    --notes-bg: #13221A;
+  }
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 64px); scroll-behavior: smooth; height: 100%; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--tan); outline-offset: 3px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  /* Concept banner */
+  .concept {
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 14px;
+    padding: 8px 22px;
+    text-align: center;
+  }
+
+  /* Header */
+  header.site {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+  .brand { font-family: var(--stencil); font-weight: 700; font-size: 22px; text-decoration: none; letter-spacing: .01em; }
+  nav.main { display: flex; gap: 22px; align-items: center; }
+  nav.main a { text-decoration: none; font-weight: 500; font-size: 15px; }
+  nav.main a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    line-height: 1.2;
+  }
+  .btn.red { background: var(--red); color: var(--red-ink); }
+  .btn.red:hover { filter: brightness(1.1); }
+  .btn.line { border-color: currentColor; background: transparent; }
+  .btn.line:hover { background: rgba(255,255,255,.12); }
+  .btn.small { padding: 9px 16px; font-size: 15px; }
+  @media (max-width: 720px) { nav.main .hide-sm { display: none; } nav.main { gap: 14px; } }
+
+  /* Hero: feed sack label */
+  .hero { padding: 40px 0 56px; }
+  .sack {
+    background-color: var(--hero-bg);
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 2px, transparent 2px 5px),
+      repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 2px, transparent 2px 5px);
+    color: var(--hero-ink);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .sack-inner {
+    border: 3px dashed color-mix(in srgb, var(--hero-ink) 55%, transparent);
+    border-radius: 6px;
+    padding: clamp(28px, 6vw, 64px);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .sack h1 {
+    font-family: var(--stencil);
+    font-weight: 700;
+    font-size: clamp(54px, 11vw, 124px);
+    line-height: .92;
+    margin: 0;
+    letter-spacing: .005em;
+  }
+  .sack h1 span { display: block; font-size: .56em; margin-top: .12em; }
+  .sack .lede { font-size: clamp(18px, 2.4vw, 22px); max-width: 30ch; margin: 22px 0 0; }
+  .sack .formerly { font-size: 15px; margin: 14px 0 0; opacity: .85; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .shoe { justify-self: center; width: min(100%, 260px); color: var(--tan); }
+  @media (max-width: 820px) {
+    .sack-inner { grid-template-columns: 1fr; }
+    .shoe { width: 150px; justify-self: start; order: -1; }
+  }
+
+  /* Sections */
+  section { padding: 56px 0; }
+  h2 { font-family: var(--stencil); font-size: clamp(32px, 5vw, 46px); line-height: 1.05; margin: 0 0 12px; }
+  .sub { color: var(--muted); max-width: 56ch; margin: 0 0 32px; }
+  .sample-note { font-size: 14px; color: var(--muted); border-left: 3px solid var(--tan); padding-left: 12px; margin: 0 0 28px; max-width: 62ch; }
+
+  /* Category board */
+  .board { border-top: 2px solid var(--ink); }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) 2fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+  }
+  .row h3 { font-family: var(--stencil); font-size: 30px; margin: 0; line-height: 1.1; }
+  .row p { margin: 0; color: var(--muted); max-width: 52ch; }
+  @media (max-width: 640px) { .row { grid-template-columns: 1fr; gap: 6px; } }
+
+  /* Finder */
+  .finder { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: clamp(20px, 4vw, 36px); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+  .chip {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .chip[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+  .panel h3 { font-family: var(--stencil); font-size: 28px; margin: 0 0 8px; }
+  .panel ul { margin: 0 0 20px; padding-left: 20px; columns: 2; column-gap: 40px; }
+  .panel li { margin-bottom: 6px; break-inside: avoid; }
+  @media (max-width: 640px) { .panel ul { columns: 1; } }
+  .stock-note { font-size: 14px; color: var(--muted); margin: 0 0 18px; }
+
+  /* Specials */
+  .specials { background: var(--tan); color: #1A1209; }
+  .specials .wrap { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: center; justify-content: space-between; }
+  .specials h2 { margin: 0 0 6px; }
+  .specials p { margin: 0; max-width: 46ch; }
+  .specials .btn.line { border-color: #1A1209; color: #1A1209; }
+  .specials .btn.line:hover { background: rgba(0,0,0,.08); }
+  .ticket { border: 3px dashed #1A1209; padding: 14px 22px; border-radius: 6px; font-family: var(--stencil); font-size: 26px; font-weight: 700; line-height: 1.15; }
+  .ticket small { display: block; font-family: var(--sans); font-size: 13px; font-weight: 500; margin-top: 4px; }
+
+  /* Visit */
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 720px) { .visit-grid { grid-template-columns: 1fr; gap: 28px; } }
+  dl { margin: 0; }
+  dt { font-weight: 700; margin-top: 18px; }
+  dt:first-child { margin-top: 0; }
+  dd { margin: 2px 0 0; }
+  dd a { text-underline-offset: 3px; }
+  .hours-note { color: var(--muted); font-size: 15px; }
+  .visit-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 28px; }
+
+  /* Notes for the owners */
+  .notes { background: var(--notes-bg); border-top: 1px solid var(--line); }
+  .notes ul { margin: 0 0 20px; padding-left: 20px; max-width: 62ch; }
+  .notes li { margin-bottom: 8px; }
+  .notes h3 { font-family: var(--stencil); font-size: 24px; margin: 28px 0 10px; }
+
+  footer { padding: 32px 0 40px; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<div class="concept">Website concept for Callahan's Feed & Tack, prepared by Realltime. Items marked "sample" will be replaced with your real details.</div>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top">Callahan's Feed &amp; Tack</a>
+    <nav class="main" aria-label="Main">
+      <a class="hide-sm" href="#carry">What we carry</a>
+      <a class="hide-sm" href="#finder">Find your animal</a>
+      <a class="hide-sm" href="#visit">Visit</a>
+      <a class="btn red small" href="tel:+18638590655">Call (863) 859-0655</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="sack">
+      <div class="sack-inner">
+        <div>
+          <h1>Callahan's <span>Feed &amp; Tack</span></h1>
+          <p class="lede">Feed, tack and supplies for the animals you look after.</p>
+          <p class="formerly">Lakeland, Florida. Formerly J &amp; J Tack Shack.</p>
+          <div class="cta-row">
+            <a class="btn red" href="tel:+18638590655">Call the store</a>
+            <a class="btn line" href="https://www.google.com/maps/search/?api=1&amp;query=8801+US+Hwy+98+N+Lakeland+FL+33809" target="_blank" rel="noopener">Get directions</a>
+          </div>
+        </div>
+        <svg class="shoe" viewBox="0 0 200 220" role="img" aria-label="Horseshoe">
+          <path d="M52 200 L52 118 C52 50 148 50 148 118 L148 200 L120 200 L120 122 C120 84 80 84 80 122 L80 200 Z" fill="currentColor"/>
+          <g fill="var(--hero-bg)">
+            <circle cx="66" cy="168" r="5"/><circle cx="66" cy="138" r="5"/><circle cx="80" cy="106" r="5"/>
+            <circle cx="134" cy="168" r="5"/><circle cx="134" cy="138" r="5"/><circle cx="120" cy="106" r="5"/>
+            <circle cx="100" cy="92" r="5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <section id="carry" style="padding-top:8px">
+    <div class="wrap">
+      <h2>What we carry</h2>
+      <p class="sub">One stop for the daily needs of horses, livestock, poultry and pets.</p>
+      <p class="sample-note">Sample categories based on the store's name. We'll replace these with your actual inventory and brands.</p>
+      <div class="board">
+        <div class="row"><h3>Feed</h3><p>Horse, livestock, poultry and pet feed, plus the supplements that go with it.</p></div>
+        <div class="row"><h3>Tack</h3><p>Halters, leads, saddles, bridles and the gear riders and handlers reach for every day.</p></div>
+        <div class="row"><h3>Animal care</h3><p>Grooming, fly control, wormers and first aid for the barn and the house.</p></div>
+        <div class="row"><h3>Farm and barn</h3><p>Buckets, feeders, waterers and the small things that keep a property running.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="finder" style="padding-top:8px">
+    <div class="wrap">
+      <h2>Find your animal</h2>
+      <p class="sub">Pick what you're feeding to see what to ask us about. Then call to check stock before you drive over.</p>
+      <div class="finder">
+        <div class="chips" role="tablist" aria-label="Choose an animal">
+          <button class="chip" role="tab" aria-selected="true" aria-controls="panel" id="t-horses" data-key="horses">Horses</button>
+          <button class="chip" role="tab" aria-selected="false" aria-controls="panel" id="t-cattle" data-key="cattle">Cattle</button>
+          <button class="chip" role="tab" aria-selected="false" aria-controls="panel" id="t-goats" data-key="goats">Goats &amp; sheep</button>
+          <button class="chip" role="tab" aria-selected="false" aria-controls="panel" id="t-chickens" data-key="chickens">Chickens</button>
+          <button class="chip" role="tab" aria-selected="false" aria-controls="panel" id="t-pets" data-key="pets">Dogs &amp; cats</button>
+        </div>
+        <div class="panel" id="panel" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="specials" aria-labelledby="sp-h">
+    <div class="wrap">
+      <div>
+        <h2 id="sp-h">Weekly specials</h2>
+        <p>Deals get posted here and on our Facebook page, so you see them before the weekend rush.</p>
+        <p style="margin-top:16px"><a class="btn line" href="https://www.facebook.com/p/Callahans-Feed-Tack-100087413756518/" target="_blank" rel="noopener">Follow on Facebook</a></p>
+      </div>
+      <div class="ticket">
+        Saturday special
+        <small>Sample: your real weekly offer shows here.</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="wrap">
+      <h2>Visit the store</h2>
+      <p class="sub">Right on Highway 98 North in Lakeland.</p>
+      <div class="visit-grid">
+        <div class="visit-card">
+          <dl>
+            <dt>Address</dt>
+            <dd>8801 US Hwy 98 N<br>Lakeland, FL 33809</dd>
+            <dt>Phone</dt>
+            <dd><a href="tel:+18638590655">(863) 859-0655</a></dd>
+            <dt>Facebook</dt>
+            <dd><a href="https://www.facebook.com/p/Callahans-Feed-Tack-100087413756518/" target="_blank" rel="noopener">Callahan's Feed &amp; Tack</a></dd>
+          </dl>
+        </div>
+        <div>
+          <dl>
+            <dt>Hours</dt>
+            <dd class="hours-note">Sample: store hours go here, with holiday changes posted as they come up.</dd>
+            <dt>Not sure we have it?</dt>
+            <dd>Call before you come. We'll check the shelf for you.</dd>
+          </dl>
+          <p style="margin-top:24px"><a class="btn red" href="https://www.google.com/maps/search/?api=1&amp;query=8801+US+Hwy+98+N+Lakeland+FL+33809" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="notes" aria-labelledby="n-h">
+    <div class="wrap">
+      <h2 id="n-h">For the Callahan's team</h2>
+      <p class="sub">This page is a concept. Here is what it shows and what we would add.</p>
+      <h3>What this concept shows</h3>
+      <ul>
+        <li>A tap-to-call button on every screen, since most customers will call before driving over.</li>
+        <li>A "find your animal" guide that helps new customers know what to ask for.</li>
+        <li>A specials board that carries your Facebook deals onto your own site.</li>
+        <li>Clear directions and contact details that show up when people search for you.</li>
+      </ul>
+      <h3>What we would add with your input</h3>
+      <ul>
+        <li>Your real photos of the store, the shelves and your team.</li>
+        <li>Your actual hours, brands and categories.</li>
+        <li>A link to your Google Business profile so reviews and hours stay in sync.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Callahan's Feed &amp; Tack, 8801 US Hwy 98 N, Lakeland, FL 33809</span>
+    <span>Website concept by Realltime</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var data = {
+      horses:   { title: "Horses", items: ["Complete feeds and grains", "Hay and forage", "Supplements", "Bedding", "Fly control and wormers", "Halters, leads and grooming gear"] },
+      cattle:   { title: "Cattle", items: ["Pasture and finishing feeds", "Minerals and salt", "Hay", "Water troughs and feeders", "Fencing and small hardware"] },
+      goats:    { title: "Goats and sheep", items: ["Feeds and minerals", "Hay", "Hoof and grooming care", "Feeders and waterers", "Health supplies"] },
+      chickens: { title: "Chickens", items: ["Layer feed and scratch", "Chick starter", "Oyster shell and grit", "Feeders and waterers", "Coop supplies"] },
+      pets:     { title: "Dogs and cats", items: ["Dog and cat food", "Treats and chews", "Collars, leashes and bowls", "Grooming and flea care"] }
+    };
+    var panel = document.getElementById("panel");
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".chip"));
+
+    function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+    function show(key) {
+      var d = data[key];
+      tabs.forEach(function (t) {
+        t.setAttribute("aria-selected", t.getAttribute("data-key") === key ? "true" : "false");
+      });
+      panel.setAttribute("aria-labelledby", "t-" + key);
+      panel.innerHTML =
+        "<h3>" + esc(d.title) + "</h3>" +
+        "<ul>" + d.items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul>" +
+        '<p class="stock-note">Sample list. Your real stock and brands will replace it.</p>' +
+        '<a class="btn red small" href="tel:+18638590655">Call to check stock</a>';
+    }
+
+    tabs.forEach(function (t, idx) {
+      t.addEventListener("click", function () { show(t.getAttribute("data-key")); });
+      t.addEventListener("keydown", function (e) {
+        var n = null;
+        if (e.key === "ArrowRight") n = tabs[(idx + 1) % tabs.length];
+        if (e.key === "ArrowLeft") n = tabs[(idx - 1 + tabs.length) % tabs.length];
+        if (n) { e.preventDefault(); n.focus(); show(n.getAttribute("data-key")); }
+      });
+    });
+    show("horses");
+  })();
+</script>
+</body>
+</html>
